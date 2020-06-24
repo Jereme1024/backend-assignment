@@ -5,9 +5,12 @@
   "author": "Jeremy <thestyle1202@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "start": "node dist/server.js"
   },
   "dependencies": {
+    "@types/express": "^4.17.6",
+    "express": "^4.17.1",
     "typescript": "^3.9.5"
   }
 }
