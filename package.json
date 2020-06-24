@@ -8,7 +8,9 @@
         "build": "tsc",
         "start": "node dist/server.js",
         "test": "jest",
-        "lint": "yarn eslint ./src --ext .js,.jsx,.ts,.tsx"
+        "lint": "yarn eslint ./src --ext .js,.jsx,.ts,.tsx",
+        "fmt": "yarn prettier --write **/*.{ts,js,json}",
+        "check-fmt": "yarn prettier --write **/*.{ts,js,json}"
     },
     "dependencies": {
         "express": "^4.17.1"
