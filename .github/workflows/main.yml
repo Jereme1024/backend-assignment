@@ -11,11 +11,12 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+
   test:
     runs-on: ubuntu-latest 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -25,10 +26,27 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: install
       run: yarn install
-    - name: lint and test
-      run: |
-        npm run lint
-        npm test
+    - name: lint
+      run: npm run lint
+      env:
+        CI: true
+
+  test:
+    runs-on: ubuntu-latest 
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: install
+      run: yarn install
+    - name: test
+      run: npm test
       env:
         CI: true
 
