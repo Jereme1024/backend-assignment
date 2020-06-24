@@ -3,5 +3,11 @@
   "version": "1.0.0",
   "repository": "git@github.com:Jereme1024/hahow-backend-assignment.git",
   "author": "Jeremy <thestyle1202@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "typescript": "^3.9.5"
+  }
 }
