@@ -1,21 +1,43 @@
 import express = require('express')
 import { HeroModel } from './hero-model'
+import { UserModel, User } from './user-model'
 
 const app: express.Application = express()
 
 const v1 = express.Router()
 
 let heroModel: HeroModel
+let userModel: UserModel
 
 v1.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
+function verfiyUser(user: User) {
+    if (user) {
+        const target = userModel.getUser(user.name)
+        if (target) {
+            return target.password === user.password
+        }
+    }
+    return false
+}
+
+function extractUserFromReq(req: any): User | null {
+    console.log(req)
+    return null
+}
+
 v1.get('/heroes', (req, res) => {
     let isAuth = false
-    let heroes = heroModel.getHeroes()
+    const user = extractUserFromReq(req)
+    if (user) {
+        isAuth = verfiyUser(user)
+    }
+
+    const heroes = heroModel.getHeroes()
     if (!isAuth) {
-        for (let hero of heroes) {
+        for (const hero of heroes) {
             delete hero.profile
         }
     }
