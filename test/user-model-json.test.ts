@@ -1,5 +1,5 @@
 import { User } from '../src/user-model'
-import { UserModelJson } from '../src/user-model-json'
+import UserModelJson from '../src/user-model-json'
 
 describe('Test UserModelJson', () => {
     const testUser1: User = {

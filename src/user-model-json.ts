@@ -18,4 +18,4 @@ class UserModelJson implements UserModel {
     }
 }
 
-export { UserModelJson }
+export default UserModelJson
