@@ -14,16 +14,16 @@ routerV2.get('/heroes', async (req, res) => {
     const response = await axios.get(
         'https://hahow-recruit.herokuapp.com/heroes'
     )
-    let heroes: Hero[] = response.data
+    const heroes: Hero[] = response.data
     const user = extractUser(req)
     if (user && (await isAuthorized(user))) {
         await Promise.all(
             heroes.map(async (hero) => {
-                let heroId = hero.id
-                let res = await axios.get(
+                const heroId = hero.id
+                const res = await axios.get(
                     `https://hahow-recruit.herokuapp.com/heroes/${heroId}/profile`
                 )
-                let profile: Profile = res.data
+                const profile: Profile = res.data
                 hero.profile = profile
             })
         )
@@ -36,13 +36,13 @@ routerV2.get('/heroes/:heroId', async (req, res) => {
     const response = await axios.get(
         `https://hahow-recruit.herokuapp.com/heroes/${heroId}`
     )
-    let hero: Hero = response.data
+    const hero: Hero = response.data
     const user = extractUser(req)
     if (user && (await isAuthorized(user))) {
-        let res = await axios.get(
+        const res = await axios.get(
             `https://hahow-recruit.herokuapp.com/heroes/${heroId}/profile`
         )
-        let profile: Profile = res.data
+        const profile: Profile = res.data
         hero.profile = profile
     }
     res.send(hero)
