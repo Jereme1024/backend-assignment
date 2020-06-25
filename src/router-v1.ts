@@ -32,7 +32,7 @@ function extractUserFromReq(req: any): User | null {
 }
 
 routerV1.get('/', (req, res) => {
-    console.log('Hello World!')
+    res.send('Hello World!')
 })
 
 routerV1.get('/heroes', (req, res) => {
