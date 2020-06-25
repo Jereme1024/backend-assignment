@@ -21,7 +21,7 @@
 ## Low
 
 -   [0.5] #0012 Write a basic README - Setup, Start server, Run test
--   [0.5] #0018 Add documents
+-   [0.5] #0018 ~~Add documents~~
 -   [1.0] #0013 (Spike) NodeJS log system
 -   [0.5] #0015 (Spike) Assertion
 -   [0.5] #0017 (Spike) Profiler
