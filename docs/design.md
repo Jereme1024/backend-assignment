@@ -26,9 +26,9 @@
 -   Should I separate dev and prod server?
 -   How do I trace the log? Raygun?
 -   ESLint? JSHint? TSLint?
-    **Reference:**
-    -   [Linting your TypeScript Codebase](https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md)
-    -   [Prettier - Code formatter](https://www.npmjs.com/package/prettier)
+    -   Reference:
+        -   [Linting your TypeScript Codebase](https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md)
+        -   [Prettier - Code formatter](https://www.npmjs.com/package/prettier)
 -   Testing framework?
     -   Jest
 -   Code coverage?
