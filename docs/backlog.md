@@ -7,8 +7,8 @@
 -   [2.0] #0005 ~~Setup init project - Readme, TS, Test, Lint~~
 -   [1.0] #0006 ~~Setup init project - CI~~
 -   [0.5] #0007 ~~(Spike) Draw UML - outline, resolver, data model~~
--   [2.0] #0008 Hero model - IF, Json impl, UT
--   [2.0] #0009 User model
+-   [2.0] #0008 ~~Hero model - IF, Json impl, UT~~
+-   [2.0] #0009 ~~User model~~
 -   [2.0] #0011 Implement IT
 -   [2.0] #0010 Glue resolvers - UT
 
