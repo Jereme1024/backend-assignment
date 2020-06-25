@@ -8,11 +8,11 @@ class HeroModelJson implements HeroModel {
         this.db = db
     }
 
-    getHeroes() {
+    getHeroes(): Hero[] {
         return this.db.heroes
     }
 
-    getHero(id: string) {
+    getHero(id: string): Hero | null {
         const hero = this.db.heroes.find((hero) => hero.id === id)
         return hero ? hero : null
     }
