@@ -11,6 +11,7 @@
 -   [2.0] #0009 ~~User model~~
 -   [2.0] #0011 Implement IT
 -   [2.0] #0010 ~~Glue resolvers - UT~~
+-   [2.0] #0019 Directly query from another server
 
 ## Medium
 
