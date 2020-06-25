@@ -9,12 +9,12 @@ type Hero = {
     id: string
     name: string
     image: string
-    profile?: Profile
+    profile: Profile
 }
 
 interface HeroModel {
-    getHeroes(showProfile: boolean): Hero[]
-    getHero(id: string, showProfile: boolean): Hero | null
+    getHeroes(): Hero[]
+    getHero(id: string): Hero | null
 }
 
 export { Hero, Profile, HeroModel }
