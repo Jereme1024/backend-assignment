@@ -11,13 +11,16 @@
 -   [2.0] #0009 ~~User model~~
 -   [2.0] #0011 Implement IT
 -   [2.0] #0010 ~~Glue resolvers - UT~~
--   [2.0] #0019 Directly query from another server
+-   [1.0] #0019 ~~(Spike) Study http request tool~~
+-   [3.0] #0020 Directly query from another server
+-   [1.0] #0022 Handle the 'Backend error' message
 
 ## Medium
 
 -   [1.0] #0003 ~~(Spike) Github Actions~~
 -   [0.5] #0014 ~~(Spike) Study Severless~~
 -   [1.0] #0004 (Spike) Study restful API integrate test - Server, Jest
+-   [1.0] #0021 Refactor structure of files
 
 ## Low
 

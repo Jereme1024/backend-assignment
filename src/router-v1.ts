@@ -5,31 +5,11 @@ import HeroModelJson from './hero-model-json'
 import { heroDb } from './hero-db'
 import UserModelJson from './user-model-json'
 import { userDb } from './user-db'
+import extractUser from './utils/extractUser'
 
 const routerV1 = express.Router()
 const heroModel: HeroModel = new HeroModelJson(heroDb)
 const userModel: UserModel = new UserModelJson(userDb)
-
-function verfiyUser(user: User) {
-    if (user) {
-        const target = userModel.getUser(user.name)
-        if (target) {
-            return target.password === user.password
-        }
-    }
-    return false
-}
-
-function extractUserFromReq(req: any): User | null {
-    if (req.headers.name && req.headers.password) {
-        const user: User = {
-            name: req.headers.name,
-            password: req.headers.password,
-        }
-        return user
-    }
-    return null
-}
 
 routerV1.get('/', (req, res) => {
     res.send('Hello World!')
@@ -37,9 +17,9 @@ routerV1.get('/', (req, res) => {
 
 routerV1.get('/heroes', (req, res) => {
     let isAuth = false
-    const user = extractUserFromReq(req)
+    const user = extractUser(req)
     if (user) {
-        isAuth = verfiyUser(user)
+        isAuth = isAuthorized(user)
     }
 
     const heroes = heroModel.getHeroes()
@@ -54,9 +34,9 @@ routerV1.get('/heroes', (req, res) => {
 
 routerV1.get('/heroes/:heroId', (req, res) => {
     let isAuth = false
-    const user = extractUserFromReq(req)
+    const user = extractUser(req)
     if (user) {
-        isAuth = verfiyUser(user)
+        isAuth = isAuthorized(user)
     }
 
     const heroId = req.params.heroId
@@ -66,5 +46,15 @@ routerV1.get('/heroes/:heroId', (req, res) => {
     }
     res.send(hero ? hero : 'Not Found')
 })
+
+function isAuthorized(user: User) {
+    if (user) {
+        const target = userModel.getUser(user.name)
+        if (target) {
+            return target.password === user.password
+        }
+    }
+    return false
+}
 
 export default routerV1
