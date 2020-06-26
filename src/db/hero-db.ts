@@ -1,4 +1,4 @@
-import { Hero } from './hero-model'
+import { Hero } from '../hero-model'
 
 type HeroDbSchema = {
     heroes: Hero[]

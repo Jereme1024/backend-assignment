@@ -1,10 +1,10 @@
-import express = require('express')
+import express from 'express'
 import { HeroModel } from './hero-model'
 import { UserModel, User } from './user-model'
 import HeroModelJson from './hero-model-json'
-import { heroDb } from './hero-db'
+import { heroDb } from './db/hero-db'
 import UserModelJson from './user-model-json'
-import { userDb } from './user-db'
+import { userDb } from './db/user-db'
 import extractUser from './utils/extractUser'
 
 const routerV1 = express.Router()

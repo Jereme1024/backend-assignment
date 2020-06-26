@@ -1,5 +1,5 @@
 import { Hero, HeroModel } from './hero-model'
-import { HeroDbSchema } from './hero-db'
+import { HeroDbSchema } from './db/hero-db'
 
 class HeroModelJson implements HeroModel {
     db: HeroDbSchema
