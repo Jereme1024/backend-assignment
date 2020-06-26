@@ -4,6 +4,7 @@ import extractUser from './utils/extractUser'
 import { User } from './user-model'
 import { Hero, Profile } from './hero-model'
 import createRetryStatus200Axios from './utils/createRetryStatus200Axios'
+import { handleError } from './utils/errors'
 
 const routerV2 = express.Router()
 
@@ -84,17 +85,6 @@ async function isAuthorized(user: User): Promise<boolean> {
         }
     )
     return response.status === 200
-}
-
-function handleError(error: any, res: any) {
-    // eslint-disable-line
-    const directlyPassThrough = error.response && error.response.status != 1000
-    if (directlyPassThrough) {
-        res.status(error.response.status).send(error.response.data)
-    } else {
-        // it will get a [ERR_HTTP_INVALID_STATUS_CODE] error when send with status code 1000
-        res.status(200).send({ code: 1000, message: 'Backend error' })
-    }
 }
 
 export default routerV2
