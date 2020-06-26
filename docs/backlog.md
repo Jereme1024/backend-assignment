@@ -15,7 +15,7 @@
 -   [3.0] #0020 ~~Directly query from another server~~
 -   [1.0] #0022 ~~Handle the 'Backend error' message~~
 -   [1.0] #0026 ~~(Spike) Study request retrying~~
--   [2.0] #0025 Refine data model
+-   [2.0] #0025 ~~Refine data model~~
 
 ## Medium
 
