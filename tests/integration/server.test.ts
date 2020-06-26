@@ -1,6 +1,6 @@
 import request from 'supertest'
 import app from '../../src/server'
-import { BackendErrro } from '../../src/utils/errors'
+import { BackendError } from '../../src/utils/errors'
 
 beforeEach(() => {
     const timeoutMs = 10 * 1000
@@ -24,7 +24,7 @@ describe('Test Server', () => {
         if (data.id) {
             expectHeroFormat(data)
         } else {
-            expect(data).toMatchObject(BackendErrro)
+            expect(data).toMatchObject(BackendError)
         }
     })
 
@@ -53,7 +53,7 @@ describe('Test Server with custom headers', () => {
         if (data.id) {
             expectHeroProfileFormat(data)
         } else {
-            expect(data).toMatchObject(BackendErrro)
+            expect(data).toMatchObject(BackendError)
         }
     })
 

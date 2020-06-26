@@ -10,9 +10,9 @@ class HeroModelJson implements HeroModel {
     }
 
     async getHeroes(): Promise<{ heroes: Hero[] }> {
-        let result: { heroes: Hero[] } = { heroes: [] }
+        const result: { heroes: Hero[] } = { heroes: [] }
         for (const hero of this.db.heroes) {
-            let h: Hero = Object.assign({}, hero)
+            const h: Hero = Object.assign({}, hero)
             delete h.profile
             result.heroes.push(h)
         }
@@ -22,7 +22,7 @@ class HeroModelJson implements HeroModel {
     async getHero(id: string): Promise<Hero> {
         const hero = this.db.heroes.find((hero) => hero.id === id)
         if (hero) {
-            let result = Object.assign({}, hero)
+            const result = Object.assign({}, hero)
             delete result.profile
             return result
         } else {

@@ -1,11 +1,12 @@
 import express from 'express'
 import { HeroModel } from './hero-model'
-import { UserModel, User } from './user-model'
-import HeroModelJson from './hero-model-json'
-import { heroDb } from './db/hero-db'
-import UserModelJson from './user-model-json'
-import { userDb } from './db/user-db'
+import { UserModel } from './user-model'
 import extractUser from './utils/extractUser'
+import { handleError } from './utils/errors'
+import HeroModelJson from './hero-model-json'
+import UserModelJson from './user-model-json'
+import { heroDb } from './db/hero-db'
+import { userDb } from './db/user-db'
 
 const routerV1 = express.Router()
 const heroModel: HeroModel = new HeroModelJson(heroDb)
@@ -15,46 +16,35 @@ routerV1.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-routerV1.get('/heroes', (req, res) => {
-    let isAuth = false
-    const user = extractUser(req)
-    if (user) {
-        isAuth = isAuthorized(user)
-    }
-
-    const heroes = heroModel.getHeroes()
-    if (!isAuth) {
-        for (const hero of heroes) {
-            delete hero.profile
+routerV1.get('/heroes', async (req, res) => {
+    try {
+        const heroes = (await heroModel.getHeroes()).heroes
+        const user = extractUser(req)
+        if (user && (await userModel.verify(user))) {
+            await Promise.all(
+                heroes.map(async (hero) => {
+                    hero.profile = await heroModel.getProfile(hero.id)
+                })
+            )
         }
+        res.send({ heroes })
+    } catch (error) {
+        handleError(error, res)
     }
-
-    res.send(heroes)
 })
 
-routerV1.get('/heroes/:heroId', (req, res) => {
-    let isAuth = false
-    const user = extractUser(req)
-    if (user) {
-        isAuth = isAuthorized(user)
-    }
-
-    const heroId = req.params.heroId
-    const hero = heroModel.getHero(heroId)
-    if (!isAuth) {
-        delete hero?.profile
-    }
-    res.send(hero ? hero : 'Not Found')
-})
-
-function isAuthorized(user: User) {
-    if (user) {
-        const target = userModel.getUser(user.name)
-        if (target) {
-            return target.password === user.password
+routerV1.get('/heroes/:heroId', async (req, res) => {
+    try {
+        const heroId = req.params.heroId
+        const hero = await heroModel.getHero(heroId)
+        const user = extractUser(req)
+        if (user && (await userModel.verify(user))) {
+            hero.profile = await heroModel.getProfile(heroId)
         }
+        res.send(hero)
+    } catch (error) {
+        handleError(error, res)
     }
-    return false
-}
+})
 
 export default routerV1
