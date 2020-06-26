@@ -9,8 +9,8 @@
         "start": "node dist/index.js",
         "test": "jest",
         "lint": "yarn eslint ./src --ext .js,.jsx,.ts,.tsx",
-        "fmt": "yarn prettier --write **/*.{ts,js,json} test/*",
-        "check-fmt": "yarn prettier --check **/*.{ts,js,json} test/*",
+        "fmt": "yarn prettier --write **/*.{ts,js,json} tests/*",
+        "check-fmt": "yarn prettier --check **/*.{ts,js,json} tests/*",
         "check-all": "npm run lint && npm run check-fmt && npm run build",
         "mon": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts"
     },
