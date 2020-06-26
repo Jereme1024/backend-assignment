@@ -2,6 +2,8 @@ import request from 'supertest'
 import app from '../../src/server'
 import { BackendError } from '../../src/utils/errors'
 
+const Prefix = ''
+
 beforeEach(() => {
     const timeoutMs = 10 * 1000
     jest.setTimeout(timeoutMs)
@@ -9,17 +11,17 @@ beforeEach(() => {
 
 describe('Test Server', () => {
     it('should get a welcome message', async () => {
-        const res = await request(app).get('/').expect(200)
+        const res = await request(app).get(`${Prefix}/`).expect(200)
         expect(res.text.includes('Hello World')).toBeTruthy()
     })
 
     it('should get heroes', async () => {
-        const res = await request(app).get('/heroes').expect(200)
+        const res = await request(app).get(`${Prefix}/heroes`).expect(200)
         expectHeroesFormat(res.body.heroes, expectHeroFormat)
     })
 
     it('should get a heroes', async () => {
-        const res = await request(app).get('/heroes/1').expect(200)
+        const res = await request(app).get(`${Prefix}/heroes/1`).expect(200)
         const data = res.body
         if (data.id) {
             expectHeroFormat(data)
@@ -29,14 +31,14 @@ describe('Test Server', () => {
     })
 
     it('should not get a heroes if not existed', async () => {
-        const res = await request(app).get('/heroes/5566').expect(404)
+        const res = await request(app).get(`${Prefix}/heroes/5566`).expect(404)
     })
 })
 
 describe('Test Server with custom headers', () => {
     it('should get heroes with good auth', async () => {
         const res = await request(app)
-            .get('/heroes')
+            .get(`${Prefix}/heroes`)
             .set('Name', 'hahow')
             .set('Password', 'rocks')
             .expect(200)
@@ -45,7 +47,7 @@ describe('Test Server with custom headers', () => {
 
     it('should get a heroes with good auth', async () => {
         const res = await request(app)
-            .get('/heroes/1')
+            .get(`${Prefix}/heroes/1`)
             .set('Name', 'hahow')
             .set('Password', 'rocks')
             .expect(200)
@@ -59,7 +61,7 @@ describe('Test Server with custom headers', () => {
 
     it('should not get heroes with bad auth', async () => {
         const res = await request(app)
-            .get('/heroes')
+            .get(`${Prefix}/heroes`)
             .set('Name', 'hahow')
             .set('Password', 'xxx')
             .expect(401)
@@ -67,7 +69,7 @@ describe('Test Server with custom headers', () => {
 
     it('should get heroes with incompleted auth format', async () => {
         const res = await request(app)
-            .get('/heroes')
+            .get(`${Prefix}/heroes`)
             .set('Name', 'hahow')
             .expect(200)
         expectHeroesFormat(res.body.heroes, expectHeroFormat)
@@ -75,7 +77,7 @@ describe('Test Server with custom headers', () => {
 
     it('should get heroes with random headers', async () => {
         const res = await request(app)
-            .get('/heroes')
+            .get(`${Prefix}/heroes`)
             .set('Name', 'hahow')
             .set('Any', 'stuffs')
             .expect(200)
