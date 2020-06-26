@@ -2,7 +2,7 @@ import request from 'supertest'
 import app from '../../src/server'
 import { BackendError } from '../../src/utils/errors'
 
-const Prefix = '/v1' // ['', '/v1', '/v2']
+const Prefix = '' // ['', '/v1', '/v2']
 
 beforeEach(() => {
     const timeoutMs = 10 * 1000
