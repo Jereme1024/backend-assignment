@@ -31,7 +31,7 @@ I feel like it's better that the code should be able to reflect itself directly 
 If the comment is just trying to explain it's intention directly.
 For example,
 
-```typescript {.line-numbers}
+```javascript {.line-numbers}
 const data = JSON.parse(res.data)
 if (data.id && data.name && data.image) {
     doSomething()
@@ -40,7 +40,7 @@ if (data.id && data.name && data.image) {
 
 It's better to extract to a well-named variable,
 
-```typescript {.line-numbers}
+```javascript {.line-numbers}
 const data = JSON.parse(res.data)
 const isHero = data.id && data.name && data.image
 if (isHero) {
@@ -50,7 +50,7 @@ if (isHero) {
 
 Or a helper method if it's widely used
 
-```typescript {.line-numbers}
+```javascript {.line-numbers}
 const data = JSON.parse(res.data)
 if (!isHero(data)) {
     doSomething()
@@ -61,13 +61,13 @@ if (!isHero(data)) {
 
 When the parameters are not trivial to read
 
-```typescript {.line-numbers}
+```javascript {.line-numbers}
 const bmi = calculateBmi(/* height */ 123, /* weight */ 45)
 ```
 
 When do something that is against a trivial idea and not easy to rewite using code
 
-```typescript {.line-numbers}
+```javascript {.line-numbers}
 const directlyPassThrough = error.response && error.response.status != 1000
 if (directlyPassThrough) {
     res.status(error.response.status).send(error.response.data)
