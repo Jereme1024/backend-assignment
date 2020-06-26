@@ -4,7 +4,7 @@ This is a backend project of HaHow's assignment. The original requirement can be
 
 ## Usage
 
-To install
+To setup the dependencies
 
 ```
 $ yarn install
@@ -22,13 +22,13 @@ To build
 $ yarn build
 ```
 
-To start
+To start a server at `http://localhost:3000`
 
 ```
 $ yarn start
 ```
 
-To check formatting locally
+To check formating locally
 
 ```
 $ yarn check-all

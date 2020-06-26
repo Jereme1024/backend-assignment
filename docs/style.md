@@ -33,6 +33,7 @@ For example,
 
 ```javascript {.line-numbers}
 const data = JSON.parse(res.data)
+// do something if it's a hero
 if (data.id && data.name && data.image) {
     doSomething()
 }
