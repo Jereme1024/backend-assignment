@@ -3,8 +3,8 @@
 SERVER_URL=${1:-"http://localhost:3000"}
 echo "server: ${SERVER_URL}"
 
-echo -e "\n===== Good index ===="
-curl -H "Accept: application/json" -H "Content-Type: application/json" -X GET ${SERVER_URL}/
+echo -e "\n===== Good info ===="
+curl -H "Accept: application/json" -H "Content-Type: application/json" -X GET ${SERVER_URL}/info
 
 echo -e "\n===== Good heroes ===="
 curl -H "Accept: application/json" -H "Content-Type: application/json" -X GET ${SERVER_URL}/heroes
