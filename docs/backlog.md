@@ -14,6 +14,7 @@
 -   [1.0] #0019 ~~(Spike) Study http request tool~~
 -   [3.0] #0020 Directly query from another server
 -   [1.0] #0022 Handle the 'Backend error' message
+-   [2.0] #0025 Refactor data model
 
 ## Medium
 
@@ -21,12 +22,15 @@
 -   [0.5] #0014 ~~(Spike) Study Severless~~
 -   [1.0] #0004 (Spike) Study restful API integrate test - Server, Jest
 -   [1.0] #0021 Refactor structure of files
+-   [0.5] #0023 (Spike) Study io-ts for type validation
 
 ## Low
 
--   [0.5] #0012 Write a basic README - Setup, Start server, Run test
+-   [0.5] #0012 ~~Write a basic README - Setup, Start server, Run test~~
+-   [1.0] #0025 Complete docs
 -   [0.5] #0018 ~~Add documents~~
+-   [1.0] #0024 Support https
 -   [1.0] #0013 (Spike) NodeJS log system
 -   [0.5] #0015 (Spike) Assertion
--   [0.5] #0017 (Spike) Profiler
 -   [0.5] #0016 (Spike) Code coverage
+-   [0.5] #0017 (Spike) Profiler
