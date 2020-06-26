@@ -36,6 +36,6 @@ $ yarn check-all
 
 ## More Chapters
 
-[design.md](https://github.com/Jereme1024/hahow-backend-assignment/blob/master/docs/design.md)
-[style.md](https://github.com/Jereme1024/hahow-backend-assignment/blob/master/docs/style.md)
-[backlog.md](https://github.com/Jereme1024/hahow-backend-assignment/blob/master/docs/backlog.md)
+-   [design.md](https://github.com/Jereme1024/hahow-backend-assignment/blob/master/docs/design.md)
+-   [style.md](https://github.com/Jereme1024/hahow-backend-assignment/blob/master/docs/style.md)
+-   [backlog.md](https://github.com/Jereme1024/hahow-backend-assignment/blob/master/docs/backlog.md)
