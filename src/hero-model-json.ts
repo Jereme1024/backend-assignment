@@ -1,5 +1,6 @@
-import { Hero, HeroModel } from './hero-model'
+import { Hero, HeroModel, Profile } from './hero-model'
 import { HeroDbSchema } from './db/hero-db'
+import { createError } from './utils/errors'
 
 class HeroModelJson implements HeroModel {
     db: HeroDbSchema
@@ -8,13 +9,34 @@ class HeroModelJson implements HeroModel {
         this.db = db
     }
 
-    getHeroes(): Hero[] {
-        return this.db.heroes
+    async getHeroes(): Promise<{ heroes: Hero[] }> {
+        let result: { heroes: Hero[] } = { heroes: [] }
+        for (const hero of this.db.heroes) {
+            let h: Hero = Object.assign({}, hero)
+            delete h.profile
+            result.heroes.push(h)
+        }
+        return result
     }
 
-    getHero(id: string): Hero | null {
+    async getHero(id: string): Promise<Hero> {
         const hero = this.db.heroes.find((hero) => hero.id === id)
-        return hero ? hero : null
+        if (hero) {
+            let result = Object.assign({}, hero)
+            delete result.profile
+            return result
+        } else {
+            throw createError(404, 'Not Found')
+        }
+    }
+
+    async getProfile(id: string): Promise<Profile> {
+        const hero = this.db.heroes.find((hero) => hero.id === id)
+        if (hero) {
+            return Object.assign({}, hero.profile)
+        } else {
+            throw createError(404, 'Not Found')
+        }
     }
 }
 
