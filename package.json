@@ -7,7 +7,7 @@
     "scripts": {
         "build": "tsc",
         "start": "node dist/index.js",
-        "test": "jest",
+        "test": "jest --no-cache",
         "lint": "yarn eslint ./src --ext .js,.jsx,.ts,.tsx",
         "fmt": "yarn prettier --write **/*.{ts,js,json} tests/*",
         "check-fmt": "yarn prettier --check **/*.{ts,js,json} tests/*",

@@ -1,4 +1,5 @@
 import { User, UserModel } from './user-model'
+import { createError } from './utils/errors'
 
 class UserModelJson implements UserModel {
     db: { [key: string]: User }
@@ -10,7 +11,20 @@ class UserModelJson implements UserModel {
         }
     }
 
-    getUser(name: string): User | null {
+    async verify(user: User): Promise<boolean> {
+        const target = this.getUser(user.name)
+        if (target) {
+            if (target.password !== user.password) {
+                throw createError(401, 'Unauthorized')
+            } else {
+                return true
+            }
+        } else {
+            throw createError(401, 'Unauthorized')
+        }
+    }
+
+    private getUser(name: string): User | null {
         if (name in this.db) {
             return this.db[name]
         }

@@ -9,12 +9,13 @@ type Hero = {
     id: string
     name: string
     image: string
-    profile: Profile
+    profile?: Profile
 }
 
 interface HeroModel {
-    getHeroes(): Hero[]
-    getHero(id: string): Hero | null
+    getHeroes(): Promise<{ heroes: Hero[] }>
+    getHero(id: string): Promise<Hero>
+    getProfile(id: string): Promise<Profile>
 }
 
 export { Hero, Profile, HeroModel }

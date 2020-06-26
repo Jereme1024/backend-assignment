@@ -4,7 +4,7 @@ type User = {
 }
 
 interface UserModel {
-    getUser(name: string): User | null
+    verify(user: User): Promise<boolean>
 }
 
 export { User, UserModel }
