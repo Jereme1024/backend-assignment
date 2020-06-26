@@ -1,5 +1,5 @@
 import HeroModelJson from '../src/hero-model-json'
-import { HeroDbSchema } from '../src/hero-db'
+import { HeroDbSchema } from '../src/db/hero-db'
 import { Hero } from '../src/hero-model'
 
 describe('Test HeroModelJson', () => {
