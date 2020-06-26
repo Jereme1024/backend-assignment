@@ -1,6 +1,6 @@
 import { User } from '../user-model'
 
-function extractUser(req: any): User | null {
+function extractUser(req: any): User | null { // eslint-disable-line
     if (req.headers.name && req.headers.password) {
         return {
             name: req.headers.name,
