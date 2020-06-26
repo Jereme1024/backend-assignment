@@ -41,6 +41,7 @@
 -   CI?
     -   Github actions
 -   API versioning?
+-   How to handle internal connection failures?
 
 # Not to do
 
