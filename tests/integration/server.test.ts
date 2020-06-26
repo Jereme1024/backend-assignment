@@ -2,7 +2,7 @@ import request from 'supertest'
 import app from '../../src/server'
 import { BackendError } from '../../src/utils/errors'
 
-const Prefix = ''
+const Prefix = '/v1' // ['', '/v1', '/v2']
 
 beforeEach(() => {
     const timeoutMs = 10 * 1000
@@ -11,8 +11,11 @@ beforeEach(() => {
 
 describe('Test Server', () => {
     it('should get a welcome message', async () => {
-        const res = await request(app).get(`${Prefix}/`).expect(200)
-        expect(res.text.includes('Hello World')).toBeTruthy()
+        const res = await request(app).get(`${Prefix}/info`).expect(200)
+        console.log(res.body)
+        expect(Object.keys(res.body)).toEqual(
+            expect.arrayContaining(['version', 'description'])
+        )
     })
 
     it('should get heroes', async () => {

@@ -1,11 +1,19 @@
 import express = require('express')
-import routerV1 from './router-v1'
+import { createRouterV1 } from './router-v1'
 import routerV2 from './router-v2'
 
-const app: express.Application = express()
+class App {
+    app: express.Application
 
-app.use('/v1', routerV1)
-app.use('/v2', routerV2)
-app.use('/', routerV2)
+    constructor() {
+        const app = express()
+        const v1 = createRouterV1()
+        app.use('/v1', v1.handle)
+        app.use('/v2', routerV2)
+        app.use('/', routerV2)
 
-export default app
+        this.app = app
+    }
+}
+
+export default new App().app
