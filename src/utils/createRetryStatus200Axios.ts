@@ -3,6 +3,8 @@ const httpAdapter = require('axios/lib/adapters/http') // eslint-disable-line
 const settle = require('axios/lib/core/settle') // eslint-disable-line
 import axiosRetry from 'axios-retry'
 
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+/* eslint-disable  @typescript-eslint/explicit-module-boundary-types */
 function createRetryStatus200Axios(
     checkFormat: (res: AxiosResponse) => boolean,
     axiosRetryConfig: any
