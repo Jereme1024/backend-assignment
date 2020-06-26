@@ -70,7 +70,7 @@ class RouterV1 {
     }
 }
 
-function createRouterV1() {
+function createRouterV1(): express.Router {
     return new RouterV1(
         {
             version: 'v1',
@@ -78,7 +78,7 @@ function createRouterV1() {
         },
         new HeroModelJson(heroDb),
         new UserModelJson(userDb)
-    )
+    ).handle
 }
 
 export { createRouterV1, RouterV1, Info }

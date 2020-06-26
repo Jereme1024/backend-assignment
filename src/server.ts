@@ -9,9 +9,9 @@ class App {
         const app = express()
         const v1 = createRouterV1()
         const v2 = createRouterV2()
-        app.use('/v1', v1.handle)
-        app.use('/v2', v2.handle)
-        app.use('/', v2.handle)
+        app.use('/v1', v1)
+        app.use('/v2', v2)
+        app.use('/', v2)
 
         this.app = app
     }

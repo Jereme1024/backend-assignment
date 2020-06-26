@@ -38,7 +38,7 @@ class HeroModelHahow implements HeroModel {
             `https://hahow-recruit.herokuapp.com/heroes/${id}`
         )
         const hero: Hero = response.data
-        return response.data
+        return hero
     }
 
     async getProfile(id: string): Promise<Profile> {
