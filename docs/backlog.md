@@ -12,8 +12,9 @@
 -   [2.0] #0011 Implement IT
 -   [2.0] #0010 ~~Glue resolvers - UT~~
 -   [1.0] #0019 ~~(Spike) Study http request tool~~
--   [3.0] #0020 Directly query from another server
--   [1.0] #0022 Handle the 'Backend error' message
+-   [3.0] #0020 ~~Directly query from another server~~
+-   [1.0] #0022 ~~Handle the 'Backend error' message~~
+-   [1.0] #0026 ~~(Spike) Study request retrying~~
 -   [2.0] #0025 Refactor data model
 
 ## Medium
