@@ -79,7 +79,7 @@ if (directlyPassThrough) {
 
 When readers might get confused whether it's a typo (V2 and V1) or not
 
-```typescript {.line-numbers}
+```javascript {.line-numbers}
 function createRouterV2(): express.Router {
     return new RouterV1( // keeping using v1 is because the IF is the same
         {
