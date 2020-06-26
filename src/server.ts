@@ -8,6 +8,4 @@ app.use('/v1', routerV1)
 app.use('/v2', routerV2)
 app.use('/', routerV2)
 
-app.listen(3000, function () {
-    console.log('App is listening on port 3000!')
-})
+export default app
