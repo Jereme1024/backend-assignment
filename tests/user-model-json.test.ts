@@ -1,5 +1,6 @@
 import { User } from '../src/user-model'
 import UserModelJson from '../src/user-model-json'
+import { createError } from '../src/utils/errors'
 
 describe('Test UserModelJson', () => {
     const testUser1: User = {
@@ -19,16 +20,23 @@ describe('Test UserModelJson', () => {
         dut = new UserModelJson(testDb)
     })
 
-    it('should get a hero by name', () => {
-        let user1 = dut!.getUser(testUser1.name)
-        expect(user1).toEqual(testUser1)
+    it('should verify successfully', async () => {
+        const res1 = await dut!.verify(testUser1)
+        expect(res1).toBeTruthy()
 
-        let user2 = dut!.getUser(testUser2.name)
-        expect(user2).toEqual(testUser2)
+        const res2 = await dut!.verify(testUser2)
+        expect(res2).toBeTruthy()
     })
 
-    it('should not get a hero by wrong name', () => {
-        let user = dut!.getUser('wrong name')
-        expect(user).toBeNull()
+    it('should verify failed with wrong user', async () => {
+        const user1: User = { name: 'u3', password: 'u3' }
+        const error = createError(401, 'Unauthorized')
+        await expect(dut!.verify(user1)).rejects.toMatchObject(error)
+    })
+
+    it('should verify failed with wrong password', async () => {
+        const user1: User = { name: 'u1', password: 'wrong' }
+        const error = createError(401, 'Unauthorized')
+        await expect(dut!.verify(user1)).rejects.toMatchObject(error)
     })
 })
