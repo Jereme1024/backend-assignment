@@ -1,6 +1,6 @@
 # Designs
 
-Here is the document where I put the ideas of design during working on it from the very beginning of what the technologies used and selected behind the design also having many open questions to the setting the boundary of what not to do. The hierarchy of program components should be probably also can found here.
+Here is the document where I put the ideas of design during working on it from the very beginning of what the technologies used and selected behind the design also having many open questions to the setting the boundary of what not to do. The hierarchy of program components should be probably found here as well.
 
 ## Goal
 
@@ -31,7 +31,7 @@ API server - it should conform to the requests of querying the heroes' data and 
 -   **Should I separate dev and prod server?**
     Since the data is provided by outside, we don't really separate at this moment.
 -   **How do I trace the log? `Raygun`?**
-    It's an important question to ask while having a project. What's the level using with log? How do we collect the logs and get them when we need them? Not sure what's the best practice so far.
+    It's an important question to ask while having a project. What's the level using with logs? How do we collect the logs and get them when we need them? Not sure what's the best practice so far.
 -   **ESLint? JSHint? TSLint?**
     Having lint is very good for the quality of the project by avoiding writing some code bad smelling.
     I chose to use `TypeScript` in this project so the selected should be able to read it.
